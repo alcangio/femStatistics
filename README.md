@@ -1,4 +1,104 @@
 
+## Passo 1) IMPORTAÇÃO E PREPARAÇÃO DOS DADOS
+### instalar e habilitar pacotes
+```
+install.packages(c("readr", "dplyr", "ggplot2"))
+   library(readr)
+   library(dplyr)
+   library(ggplot2)
+```
+### importar os arquivos
+```
+# Feminicídio
+feminicidio_2018 <- read_csv2("feminicidio_2018.csv")
+feminicidio_2019 <- read_csv2("feminicidio_2019.csv")
+feminicidio_2020 <- read_csv2("feminicidio_2020.csv")
+feminicidio_2021 <- read_csv2("feminicidio_2021.csv")
+feminicidio_2022 <- read_csv2("feminicidio_2022.csv")
+
+# Violência Doméstica
+violencia_domestica_2018 <- read_csv2("violencia_domestica_2018.csv")
+violencia_domestica_2019 <- read_csv2("violencia_domestica_2019.csv")
+violencia_domestica_2020 <- read_csv2("violencia_domestica_2020.csv")
+violencia_domestica_2021 <- read_csv2("violencia_domestica_2021.csv")
+violencia_domestica_2022 <- read_csv2("violencia_domestica_2022.csv")
+```
+### checar as estruturas
+```
+str(feminicidio_2018)
+str(feminicidio_2019)
+str(feminicidio_2020)
+str(feminicidio_2021)
+str(feminicidio_2022)
+str(violencia_domestica_2018)
+str(violencia_domestica_2019)
+str(violencia_domestica_2020)
+str(violencia_domestica_2021)
+str(violencia_domestica_2022)
+```
+### combinar dados
+```
+# feminicídio
+dados_feminicidio <- bind_rows(feminicidio_2018, feminicidio_2019, feminicidio_2020, feminicidio_2021, feminicidio_2022)
+# violência doméstica
+dados_violencia_domestica <- bind_rows(violencia_domestica_2018, violencia_domestica_2019, violencia_domestica_2020, violencia_domestica_2021, violencia_domestica_2022)
+```
+### formatação data
+```
+# Converter data_fato para o formato Date
+dados_feminicidio <- dados_feminicidio %>%
+  mutate(data_fato = as.Date(data_fato, format = "%Y-%m-%d"))
+dados_violencia_domestica <- dados_violencia_domestica %>%
+  mutate(data_fato = as.Date(data_fato, format = "%Y-%m-%d"))
+```
+### verificar o resultado
+```
+View(dados_feminicidio)
+View(dados_violencia_domestica)
+```
+
+## Passo 2) ANÁLISE EXPLORATÓRIA DOS DADOS
+
+### resumo descritivo
+
+**Feminicídio**
+```
+summary(dados_feminicidio)
+```
+![image](https://github.com/user-attachments/assets/4619386d-b2fb-4a66-b9f0-ceaacefe6e0f)
+
+**Violência Doméstica**
+```
+summary(dados_violencia_domestica)
+```
+![image](https://github.com/user-attachments/assets/e826e5a6-54a1-4bd2-9c26-fb3cd122d633)
+
+### visualização dos dados
+**Feminicídios por Ano**
+```
+feminicidios_por_ano <- dados_feminicidio %>%
+  group_by(ano) %>%
+  summarise(total_feminicidios = sum(qtde_vitimas))
+
+ggplot(feminicidios_por_ano, aes(x = ano, y = total_feminicidios)) +
+  geom_line(color = "darkred") +  # Adiciona a cor darkred à linha
+  geom_point(color = "black") +  # Adiciona pontos para melhor visualização
+  labs(title = "Feminicídios por Ano", x = "Ano", y = "Total de Feminicídios") +
+  theme_minimal()
+```
+
+**Violência Doméstica por Ano**
+```
+violencia_domestica_por_ano <- dados_violencia_domestica %>%
+  group_by(ano) %>%
+  summarise(total_violencia_domestica = sum(qtde_vitimas))
+  
+ggplot(violencia_domestica_por_ano, aes(x = ano, y = total_violencia_domestica)) +
+  geom_line(color = "navyblue") +  # Adiciona a cor purple à linha
+  geom_point(color = "black") +  # Adiciona pontos para melhor visualização
+  labs(title = "Violência Doméstica por Ano", x = "Ano", y = "Total de Casos de Violência Doméstica") +
+  theme_minimal()
+```
 
 ***
 ### Referência Bibliográfica
