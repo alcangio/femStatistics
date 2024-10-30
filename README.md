@@ -43,7 +43,7 @@ dados_feminicidio <- bind_rows(feminicidio_2018, feminicidio_2019, feminicidio_2
 # violência doméstica
 dados_violencia_domestica <- bind_rows(violencia_domestica_2018, violencia_domestica_2019, violencia_domestica_2020, violencia_domestica_2021, violencia_domestica_2022)
 ```
-### formatação data
+### formatar data
 ```
 # Converter data_fato para o formato Date
 dados_feminicidio <- dados_feminicidio %>%
@@ -86,6 +86,7 @@ ggplot(feminicidios_por_ano, aes(x = ano, y = total_feminicidios)) +
   labs(title = "Feminicídios por Ano", x = "Ano", y = "Total de Feminicídios") +
   theme_minimal()
 ```
+![](https://github.com/alcangio/femStatistics/blob/main/feminicidio_ano.png)
 
 **Violência Doméstica por Ano**
 ```
@@ -99,6 +100,7 @@ ggplot(violencia_domestica_por_ano, aes(x = ano, y = total_violencia_domestica))
   labs(title = "Violência Doméstica por Ano", x = "Ano", y = "Total de Casos de Violência Doméstica") +
   theme_minimal()
 ```
+![](https://github.com/alcangio/femStatistics/blob/main/violencia_ano.png)
 
 ***
 ### Referência Bibliográfica
