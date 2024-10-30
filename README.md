@@ -1,4 +1,4 @@
-# Violência Contra A Mulher na Pandemia
+# Violência Contra a Mulher na Pandemia
 **Dados de origem**: Portal de Dados Abertos do Estado de Minas Gerais - Polícia Civil de MG - ocorrências policiais de [Feminicídio e Violência Contra Mulher](https://dados.mg.gov.br/dataset/violencia-contra-mulher) dos anos 2018, 2019, 2020, 2021 e 2022.
 
 **Cruzamento de dados e hipóteses**: O objetivo é confirmar se a percepção da maioria das brasileiras de que a [violência contra a mulher cresceu na pandemia](https://www12.senado.leg.br/noticias/audios/2021/12/violencia-contra-a-mulher-cresceu-na-pandemia-indica-pesquisa-do-datasenado) se aplica ao estado de Minas Gerais.
