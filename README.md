@@ -232,11 +232,11 @@ for (i in 1:(nrow(violencia_domestica_por_ano) - 1)) {
 *p-value*: Se o p-valor for menor que 0.05, rejeitamos a hipótese nula, indicando que houve uma mudança significativa na proporção de feminicídios e/ou violência doméstica durante a pandemia.
 *Estimativas das Proporções*: As proporções antes e depois dos períodos comparados fornecem uma visão clara da magnitude das diferenças.
 
+## CONCLUSÃO
 Apenas entre 2018 e 2019 houve uma diferença estatisticamente significativa nas proporções de feminicídios, com uma leve redução. Nos demais anos (2019-2020, 2020-2021 e 2021-2022), as proporções de feminicídios não apresentaram mudanças significativas, sugerindo uma estabilidade.
 
 Houve diferenças estatisticamente significativas nas proporções de violência doméstica entre os anos de 2018-2019, 2019-2020, e 2021-2022, porém não houve uma diferença significativa entre 2020 e 2021, indicando que as proporções foram semelhantes nesses dois anos.
 
-## CONCLUSÃO
 Esses resultados não confirmam a hipótese de que violência contra a mulher cresceu na pandemia, baseado nas ocorrências policiais registradas no estado de Minas Gerais.
 
 >[!Warning]
