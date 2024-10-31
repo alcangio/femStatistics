@@ -82,6 +82,63 @@ summary(dados_violencia_domestica)
 ```
 ![image](https://github.com/user-attachments/assets/e826e5a6-54a1-4bd2-9c26-fb3cd122d633)
 
+### medidas de tendência central, variância e desvio padrão
+**Feminicídio**
+```
+media_fem <- mean(dados_feminicidio$qtde_vitimas, na.rm = TRUE)
+mediana_fem <- median(dados_feminicidio$qtde_vitimas, na.rm = TRUE)
+variancia_fem <- var(dados_feminicidio$qtde_vitimas, na.rm = TRUE)
+desvio_padrao_fem <- sd(dados_feminicidio$qtde_vitimas, na.rm = TRUE)
+
+print(media_fem)
+print(mediana_fem)
+print(variancia_fem)
+print(desvio_padrao_fem)
+```
+![image](https://github.com/user-attachments/assets/3d168bf5-01f4-43a5-a551-6f2b386c86aa)
+
+
+**Violência doméstica**
+```
+media_vd <- mean(dados_violencia_domestica$qtde_vitimas, na.rm = TRUE)
+mediana_vd <- median(dados_violencia_domestica$qtde_vitimas, na.rm = TRUE)
+variancia_vd <- var(dados_violencia_domestica$qtde_vitimas, na.rm = TRUE)
+desvio_padrao_vd <- sd(dados_violencia_domestica$qtde_vitimas, na.rm = TRUE)
+
+print(media_vd)
+print(mediana_vd)
+print(variancia_vd)
+print(desvio_padrao_vd)
+```
+![image](https://github.com/user-attachments/assets/9d46220c-3b43-4b33-9c5e-6a3903d54d07)
+
+### correlação entre vítimas de feminicídio e violência doméstica por ano
+```
+# Combinar as médias por ano
+dados_combinados <- data.frame(
+  ano = c(2018, 2019, 2020, 2021, 2022),
+  media_fem = c(mean(feminicidio_2018$qtde_vitimas, na.rm = TRUE), mean(feminicidio_2019$qtde_vitimas, na.rm = TRUE), mean(feminicidio_2020$qtde_vitimas, na.rm = TRUE), mean(feminicidio_2021$qtde_vitimas, na.rm = TRUE), mean(feminicidio_2022$qtde_vitimas, na.rm = TRUE)),
+  media_vd = c(mean(violencia_domestica_2018$qtde_vitimas, na.rm = TRUE), mean(violencia_domestica_2019$qtde_vitimas, na.rm = TRUE), mean(violencia_domestica_2020$qtde_vitimas, na.rm = TRUE), mean(violencia_domestica_2021$qtde_vitimas, na.rm = TRUE), mean(violencia_domestica_2022$qtde_vitimas, na.rm = TRUE))
+)
+
+# Calcular a correlação
+correlacao <- cor(dados_combinados$media_fem, dados_combinados$media_vd, use = "complete.obs")
+print(correlacao)
+
+# Gráfico de dispersão para visualização da correlação
+library(ggplot2)
+ggplot(dados_combinados, aes(x = media_fem, y = media_vd)) +
+    geom_point() +
+    geom_smooth(method = "lm", col = "blue") +
+    labs(title = "Correlação entre Feminicídio e Violência Doméstica",
+         x = "Média de Feminicídio",
+         y = "Média de Violência Doméstica") +
+    theme_minimal()
+```
+**Correlação positiva muito fraca**
+![image](https://github.com/user-attachments/assets/769fb818-78c4-4b2a-9945-1bed8d78ccf1)
+
+
 ### visualização dos dados
 **Feminicídios por Ano**
 ```
