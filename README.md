@@ -135,11 +135,13 @@ ggplot(dados_combinados, aes(x = media_fem, y = media_vd)) +
          y = "Média de Violência Doméstica") +
     theme_minimal()
 ```
-**Correlação positiva muito fraca**
 ![image](https://github.com/user-attachments/assets/769fb818-78c4-4b2a-9945-1bed8d78ccf1)
 
 
 ### visualização dos dados
+**Correlação positiva muito fraca**
+![](https://github.com/alcangio/femStatistics/blob/main/correlacao.png)
+
 **Feminicídios por Ano**
 ```
 feminicidios_por_ano <- dados_feminicidio %>%
@@ -169,6 +171,10 @@ ggplot(violencia_domestica_por_ano, aes(x = ano, y = total_violencia_domestica))
 ![](https://github.com/alcangio/femStatistics/blob/main/violencia_ano.png)
 
 ## Passo 3) ANÁLISE INFERENCIAL
+### Teste de hipótese
+- *Hipótese Nula (H0)*: A proporção de casos de feminicídio e violência doméstica em 2020-2021 é igual à proporção em anos anteriores.
+- *Hipótese Alternativa (H1)*: A proporção de casos de feminicídio e violência doméstica em 2020-2021 é diferente da proporção em anos anteriores.
+
 ### Teste de proporções (comparando anos consecutivos)
 **Calcular o total de casos por ano**
 ```
@@ -221,6 +227,10 @@ for (i in 1:(nrow(violencia_domestica_por_ano) - 1)) {
 }
 ```
 ![image](https://github.com/user-attachments/assets/44b1fd29-6630-4f0c-959a-44dc6a059b03)
+
+### Interpretação dos resultados
+*p-value*: Se o p-valor for menor que 0.05, rejeitamos a hipótese nula, indicando que houve uma mudança significativa na proporção de feminicídios e/ou violência doméstica durante a pandemia.
+*Estimativas das Proporções*: As proporções antes e depois dos períodos comparados fornecem uma visão clara da magnitude das diferenças.
 
 Apenas entre 2018 e 2019 houve uma diferença estatisticamente significativa nas proporções de feminicídios, com uma leve redução. Nos demais anos (2019-2020, 2020-2021 e 2021-2022), as proporções de feminicídios não apresentaram mudanças significativas, sugerindo uma estabilidade.
 
