@@ -134,25 +134,6 @@ print(kurtosis_vd)
 
 A distribuição dos dados, tanto em Feminicídio quanto em Violência Doméstica, é fortemente assimétrica para a direita e extremamente leptocúrtica, o que indica a presença de poucos valores extremamente altos (outliers).
 
-**Gráfico de dispersão para identificar outliers**
-```
-# Feminicídio
-ggplot(dados_feminicidio, aes(x = data_fato, y = qtde_vitimas)) +
-  geom_point(color = "darkred") +
-  labs(title = "Dispersão de Feminicídio por Data",
-       x = "Data",
-       y = "Quantidade de Vítimas") +
-  theme_minimal()
-
-# Violência Doméstica
-ggplot(dados_violencia_domestica, aes(x = data_fato, y = qtde_vitimas)) +
-  geom_point(color = "purple") +
-  labs(title = "Dispersão de Violência Doméstica por Data",
-       x = "Data",
-       y = "Quantidade de Vítimas") +
-  theme_minimal()
-```
-
 ### correlação entre vítimas de feminicídio e violência doméstica por ano
 ```
 # Combinar as médias por ano
