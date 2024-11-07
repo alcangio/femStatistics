@@ -112,6 +112,47 @@ print(desvio_padrao_vd)
 ```
 ![image](https://github.com/user-attachments/assets/9d46220c-3b43-4b33-9c5e-6a3903d54d07)
 
+### assimetria e curtose
+```
+# Instalação do pacote e1071
+install.packages("e1071")
+library(e1071)
+
+## Feminicídio
+skewness_fem <- skewness(dados_feminicidio$qtde_vitimas, na.rm = TRUE)
+kurtosis_fem <- kurtosis(dados_feminicidio$qtde_vitimas, na.rm = TRUE)
+print(skewness_fem)
+print(kurtosis_fem)
+
+## Violência doméstica
+skewness_vd <- skewness(dados_violencia_domestica$qtde_vitimas, na.rm = TRUE)
+kurtosis_vd <- kurtosis(dados_violencia_domestica$qtde_vitimas, na.rm = TRUE)
+print(skewness_vd)
+print(kurtosis_vd)
+```
+![image](https://github.com/user-attachments/assets/f4b0f505-082c-4d4c-95be-68f5d7bb6735)
+
+A distribuição dos dados, tanto em Feminicídio quanto em Violência Doméstica, é fortemente assimétrica para a direita e extremamente leptocúrtica, o que indica a presença de poucos valores extremamente altos (outliers).
+
+**Gráfico de dispersão para identificar outliers**
+```
+# Feminicídio
+ggplot(dados_feminicidio, aes(x = data_fato, y = qtde_vitimas)) +
+  geom_point(color = "darkred") +
+  labs(title = "Dispersão de Feminicídio por Data",
+       x = "Data",
+       y = "Quantidade de Vítimas") +
+  theme_minimal()
+
+# Violência Doméstica
+ggplot(dados_violencia_domestica, aes(x = data_fato, y = qtde_vitimas)) +
+  geom_point(color = "purple") +
+  labs(title = "Dispersão de Violência Doméstica por Data",
+       x = "Data",
+       y = "Quantidade de Vítimas") +
+  theme_minimal()
+```
+
 ### correlação entre vítimas de feminicídio e violência doméstica por ano
 ```
 # Combinar as médias por ano
