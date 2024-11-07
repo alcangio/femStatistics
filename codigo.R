@@ -1,9 +1,10 @@
 # 1. IMPORTAÇÃO E PREPARAÇÃO DOS DADOS
 ## Instalação e ativação dos pacotes
-install.packages(c("readr", "dplyr", "ggplot2"))
+install.packages(c("readr", "dplyr", "ggplot2", "e1071"))
 library(readr)
 library(dplyr)
 library(ggplot2)
+library(e1071)
 
 ## Importando os arquivos
 feminicidio_2018 <- read_csv2("feminicidio_2018.csv")
@@ -73,6 +74,19 @@ print(media_vd)
 print(mediana_vd)
 print(variancia_vd)
 print(desvio_padrao_vd)
+
+## Assimetria e Curtose
+# Feminicídio
+skewness_fem <- skewness(dados_feminicidio$qtde_vitimas, na.rm = TRUE)
+kurtosis_fem <- kurtosis(dados_feminicidio$qtde_vitimas, na.rm = TRUE)
+print(skewness_fem)
+print(kurtosis_fem)
+
+# Violência doméstica
+skewness_vd <- skewness(dados_violencia_domestica$qtde_vitimas, na.rm = TRUE)
+kurtosis_vd <- kurtosis(dados_violencia_domestica$qtde_vitimas, na.rm = TRUE)
+print(skewness_vd)
+print(kurtosis_vd)
 
 ## Correlação entre vítimas de feminicídio e violência doméstica por ano
 # Combinar as médias por ano
